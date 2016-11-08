@@ -1,0 +1,158 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://qikexpress.appspot.com/_ah/api",
+  "name" : "groceryitemsoperations",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://qikexpress.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "groceryitemsoperations.groceryitemcategories.all" : {
+      "path" : "groceryItemCategories/all",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.rest.qikexpress.endpoints.GroceryItemEndpoint.listGroceryItemCategories",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "groceryitemsoperations.groceryitems.all" : {
+      "path" : "groceryItems/all",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.rest.qikexpress.endpoints.GroceryItemEndpoint.listGroceryItems",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "groceryitemsoperations.groceryitems.select" : {
+      "path" : "groceryItems/select",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.rest.qikexpress.endpoints.GroceryItemEndpoint.getGroceryItem",
+      "request" : {
+        "parameters" : {
+          "placeid" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "StringCollection" : {
+        "id" : "StringCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "GroceryItem" : {
+        "id" : "GroceryItem",
+        "type" : "object",
+        "properties" : {
+          "groceryId" : {
+            "type" : "string"
+          },
+          "groceryItemId" : {
+            "type" : "integer"
+          },
+          "groceryItemPriceValue" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "groceryItemName" : {
+            "type" : "string"
+          },
+          "groceryItemImage" : {
+            "type" : "string"
+          },
+          "catLev1" : {
+            "type" : "string"
+          },
+          "catLev2" : {
+            "type" : "string"
+          },
+          "catLev3" : {
+            "type" : "string"
+          },
+          "catLev4" : {
+            "type" : "string"
+          }
+        }
+      },
+      "GroceryItemCollection" : {
+        "id" : "GroceryItemCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "GroceryItem"
+            }
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.rest.qikexpress.endpoints.GroceryItemEndpoint.listGroceryItemCategories" : {
+        "response" : {
+          "$ref" : "StringCollection"
+        }
+      },
+      "com.rest.qikexpress.endpoints.GroceryItemEndpoint.listGroceryItems" : {
+        "response" : {
+          "$ref" : "GroceryItemCollection"
+        }
+      },
+      "com.rest.qikexpress.endpoints.GroceryItemEndpoint.getGroceryItem" : {
+        "response" : {
+          "$ref" : "GroceryItemCollection"
+        }
+      }
+    }
+  }
+}

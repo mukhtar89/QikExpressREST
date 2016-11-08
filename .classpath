@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/mukht/workspace/jar_files/appengine-api-1.0-sdk-1.9.30.jar"/>
+	<classpathentry kind="lib" path="C:/Users/mukht/workspace/jar_files/appengine-endpoints-1.9.30.jar"/>
+	<classpathentry kind="lib" path="C:/Users/mukht/workspace/jar_files/javax.inject-1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/mukht/workspace/jar_files/jdo-api-3.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/mukht/workspace/jar_files/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/mukht/workspace/jar_files/servlet-api-2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/mukht/workspace/jar_files_old/mysql-connector-java-5.1.40.jar" sourcepath="C:/Users/mukht/.m2/repository/mysql/mysql-connector-java/5.1.40/mysql-connector-java-5.1.40-sources.jar"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>

@@ -1,0 +1,113 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://qikexpress.appspot.com/_ah/api",
+  "name" : "groceryoperations",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://qikexpress.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "groceryoperations.groceries.all" : {
+      "path" : "grocery/all",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.rest.qikexpress.endpoints.GroceryEndpoint.listGroceries",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "groceryoperations.groceries.select" : {
+      "path" : "grocery/select",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.rest.qikexpress.endpoints.GroceryEndpoint.getGrocery",
+      "request" : {
+        "parameters" : {
+          "placeid" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Grocery" : {
+        "id" : "Grocery",
+        "type" : "object",
+        "properties" : {
+          "brandId" : {
+            "type" : "integer"
+          },
+          "photoWidth" : {
+            "type" : "integer"
+          },
+          "placeId" : {
+            "type" : "string"
+          },
+          "photoReference" : {
+            "type" : "string"
+          },
+          "profileImage" : {
+            "type" : "string"
+          }
+        }
+      },
+      "GroceryCollection" : {
+        "id" : "GroceryCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Grocery"
+            }
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.rest.qikexpress.endpoints.GroceryEndpoint.listGroceries" : {
+        "response" : {
+          "$ref" : "GroceryCollection"
+        }
+      },
+      "com.rest.qikexpress.endpoints.GroceryEndpoint.getGrocery" : {
+        "response" : {
+          "$ref" : "GroceryCollection"
+        }
+      }
+    }
+  }
+}
